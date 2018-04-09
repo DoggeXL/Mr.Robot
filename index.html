@@ -4,37 +4,64 @@
     <meta charset="UTF-8">
     <title>Mr.Robot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Websites/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
 body {font-family: "Lato", sans-serif}
 .mySlides {display: none}
 </style>
 <body style="background-color: black;">
-  <div class="container" style="text-align:center;">
+  <div id="all" class="container" style="text-align:center;">
     <head>
+      <div id="icon" class="fa"></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
   <img src="https://www.telegraph.co.uk/content/dam/on-demand/2016/07/12/mr-robot-slater-mugshot_trans_NvBQzQNjv4BqOJQxtphcDX4cgHEp7KsI6ZobQ60yeHxTtA6Hki93Etw.jpg?imwidth=450" id="mr" style="border: 10px solid orange;"></img>
   <h3 id="txt" style="color: white;">Hey kiddo!</h3>
 </div>
   <div class="container" id="alltext" style="text-align:center;">
-  <form onsubmit="haha()">
+  <form onsubmit="Change()">
   <label style="color: white;">Whats up?</label>
   <input type="text">
-  <input type="button" onclick="haha()" value="Answer">
+  <!-- If the button is clicked it calls the function Change --->
+  <input type="button" onclick="Change()" value="Answer">
 </div>
 </form>
-
+<style>
+#icon {
+  font-size: 100px;
+  margin-top: 300px;
+  float: right;
+}
+</style>
   <script>
-  function haha(){
+  //Takes div element icon and changes html with icon id
+  function icon(){
+    let icon1 = document.getElementById('icon');
+    icon1.innerHTML = "&#xf023"
+//Every 1sec the icon changes
+    setTimeout(function(){
+      icon1.innerHTML = "&#xf13e"
+    }, 1000);
+  }
+  //Goes through the function every 3seconds so theres a delay
+  icon();
+  setInterval(icon, 3000);
+  //Changes image and changes text and Styling
+  function Change(){
+    //Grabs two elements by their id to shorten the styling code
     var span = document.getElementById('txt')
     var text = document.getElementById('alltext')
+    //Makes the text and button disappear
     text.style.display = "none"
-    if ( $(window).width() > 739) {
+    //If viewed on mobile text will display differently
+    if ($(window).width() > 739) {
       document.getElementById('mr').src="https://tribzap2it.files.wordpress.com/2016/06/rami-malek-christian-slater-mr-robot.jpg?w=900";
       setTimeout(function(){span.style.top = "430px", span.style.textAlign = "center", span.style.color = "white", span.style.left = "300px", span.style.position = "absolute", span.style.fontSize = "25px", span.innerHTML = "If you honestly think i give one, then you need to rethink your life"}, 200);
 }
 else {
+  //If screen is larger than 739px text shows differently
   document.getElementById('mr').src="https://tribzap2it.files.wordpress.com/2016/06/rami-malek-christian-slater-mr-robot.jpg?w=900";
   document.getElementById('mr').height = "300";
   document.getElementById('mr').width = "500";
